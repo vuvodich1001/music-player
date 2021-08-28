@@ -155,6 +155,10 @@ audio.onpause = function (e) {
     btn_play.innerHTML = `<i class="fas fa-play-circle"></i>`;
 }
 
+range.oninput = function (e) {
+    audio.currentTime = e.target.value;
+}
+
 function changeTime(second) {
     var s = second % 60;
     s < 10 ? s = `0${s}` : s;
@@ -169,10 +173,6 @@ audio.ontimeupdate = function (e) {
         time.innerText = changeTime(Math.floor(audio.currentTime));
         duration.innerText = changeTime(Math.floor(audio.duration));
     }
-}
-
-range.onchange = function (e) {
-    audio.currentTime = e.target.value;
 }
 
 audio.onended = function (e) {

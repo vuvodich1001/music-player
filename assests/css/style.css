@@ -122,6 +122,11 @@ input[type="range"]::-webkit-slider-thumb {
   top: -45px;
   left: 23px; */
 }
+
+.volume {
+  position: relative;
+  top: -10px;
+}
 .control {
   width: 100%;
   display: flex;

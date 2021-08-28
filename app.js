@@ -16,6 +16,43 @@ var songs = [
         author: 'Mai Ngon',
         path: './assests/music/superhero-feat-chris-linton-ncs-release.mp3',
         image: './assests/img/superhero-image.jpg'
+    },
+    {
+        title: 'Nevada',
+        author: 'Cozi',
+        path: './assests/music/nevada-ft-cozi-zuehlsdorff-lyrics.mp3',
+        image: './assests/img/nevada-image.jpg'
+    },
+    {
+        title: 'Summertime',
+        author: 'Vu Nguyen',
+        path: './assests/music/391-summertime-sunshine.mp3',
+        image: './assests/img/summertime-image.jpg'
+    },
+    {
+        title: 'Superhero',
+        author: 'Mai Ngon',
+        path: './assests/music/superhero-feat-chris-linton-ncs-release.mp3',
+        image: './assests/img/superhero-image.jpg'
+    }
+    ,
+    {
+        title: 'Nevada',
+        author: 'Cozi',
+        path: './assests/music/nevada-ft-cozi-zuehlsdorff-lyrics.mp3',
+        image: './assests/img/nevada-image.jpg'
+    },
+    {
+        title: 'Summertime',
+        author: 'Vu Nguyen',
+        path: './assests/music/391-summertime-sunshine.mp3',
+        image: './assests/img/summertime-image.jpg'
+    },
+    {
+        title: 'Superhero',
+        author: 'Mai Ngon',
+        path: './assests/music/superhero-feat-chris-linton-ncs-release.mp3',
+        image: './assests/img/superhero-image.jpg'
     }
 ]
 
@@ -29,6 +66,7 @@ var btn_repeat = $('.btn-repeat');
 var btn_random = $('.btn-random');
 var range = $('#progress');
 var songName = $('.header h2');
+var songImageCover = $('.cd');
 var songImage = $('.cd .cd-thumb');
 var playlist = $('.playlist');
 var volume = $('#volume');
@@ -48,7 +86,7 @@ function renderSong() {
     var musics = songs.map(function (value) {
         return `
         <div class="music">
-        <img src="${value.image}" alt="">
+        <div class="playlist-cd" style="background-image: url('${value.image}');"></div>
         <div class="body">
             <h3 class="title">${value.title}</h3>
             <span>${value.author}</span>
@@ -168,14 +206,15 @@ btn_random.onclick = function (e) {
     init(currentSong);
     audio.play();
 }
-// document.onscroll = function (e) {
-//     var scroll = window.scrollY;
-//     var cdWidth = songImage.offsetWidth;
 
-//     var newCdWidth = cdWidth - scroll;
-//     songImage.style.width = scroll >= 0 ? (cdWidth - scroll) + 'px' : 0;
-//     console.log(scroll)
-// }
+var cdWidth = songImageCover.clientWidth;
+document.onscroll = function (e) {
+    var scroll = window.scrollY;
+    // var cdWidth = songImage.offsetWidth;
+    var newCdWidth = cdWidth - scroll;
+    songImageCover.style.width = newCdWidth > 0 ? newCdWidth + 'px' : 0;
+    songImageCover.style.opacti = newCdWidth / scroll;
+}
 
 
 var animationCd = songImage.animate([{

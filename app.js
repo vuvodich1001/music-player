@@ -97,8 +97,8 @@ function renderSong() {
     })
     playlist.innerHTML = musics.join(' ');
 
-    var music = $$('.music');
-    Array.from(music).forEach(function (music) {
+    var musics = $$('.music');
+    Array.from(musics).forEach(function (music) {
         music.onclick = function (e) {
             var title = music.querySelector('.title');
             var index = songs.findIndex(function (song) {
@@ -108,6 +108,10 @@ function renderSong() {
             init(currentSong);
             animationCd.play();
             audio.play();
+            // songImageCover.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // console.log(songImageCover)
+            songImageCover.style.width = '200px';
+            songImageCover.style.opacity = 1;
         }
     })
 }

@@ -213,7 +213,7 @@ document.onscroll = function (e) {
     // var cdWidth = songImage.offsetWidth;
     var newCdWidth = cdWidth - scroll;
     songImageCover.style.width = newCdWidth > 0 ? newCdWidth + 'px' : 0;
-    songImageCover.style.opacti = newCdWidth / scroll;
+    songImageCover.style.opacity = newCdWidth / scroll;
 }
 
 

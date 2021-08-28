@@ -54,6 +54,7 @@ html {
   width: 100%;
   padding-top: 100%;
   margin: auto;
+  background-position: center;
   background-size: cover;
   border-radius: 50%;
   transition: all linear 0.2s;
@@ -172,6 +173,7 @@ input[type="range"]::-webkit-slider-thumb {
   width: 60px;
   height: 60px;
   background-size: cover;
+  background-position: center;
   border-radius: 50%;
   margin: 10px;
 }

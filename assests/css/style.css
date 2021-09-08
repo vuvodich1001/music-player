@@ -48,6 +48,7 @@ html {
   display: flex;
   margin: auto;
   width: 200px;
+  transition: all linear 0.2s;
 }
 
 .cd-thumb {

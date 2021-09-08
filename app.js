@@ -1,4 +1,4 @@
-var songs = [
+const songs = [
     {
         title: 'Nevada',
         author: 'Cozi',
@@ -56,8 +56,8 @@ var songs = [
     }
 ]
 
-var $ = document.querySelector.bind(document);
-var $$ = document.querySelectorAll.bind(document);
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 var audio = $('audio');
 var btn_play = $('.btn-play');
 var btn_next = $('.btn-next');
@@ -72,7 +72,7 @@ var playlist = $('.playlist');
 var volume = $('#volume');
 var time = $('.time');
 var duration = $('.duration');
-var currentSong = 0;
+var currentSong = JSON.parse(sessionStorage.getItem('cursong')) || 0;
 var isPlaying = false;
 
 audio.volume = volume.value;
@@ -80,20 +80,21 @@ function init(currentS) {
     audio.src = songs[currentS].path;
     songName.innerHTML = songs[currentS].title
     songImage.style.backgroundImage = `url(${songs[currentS].image})`;
+    sessionStorage.setItem('cursong', JSON.stringify(currentSong));
 }
 
 function renderSong() {
     var musics = songs.map(function (value) {
         return `
-        <div class="music">
-        <div class="playlist-cd" style="background-image: url('${value.image}');"></div>
-        <div class="body">
-            <h3 class="title">${value.title}</h3>
-            <span>${value.author}</span>
-        </div>
-        <i class="fas fa-ellipsis-h"></i>
-        </div>
-        `;
+                <div class="music">
+                <div class="playlist-cd" style="background-image: url('${value.image}');"></div>
+                <div class="body">
+                    <h3 class="title">${value.title}</h3>
+                    <span>${value.author}</span>
+                </div>
+                <i class="fas fa-ellipsis-h"></i>
+                </div>
+                `;
     })
     playlist.innerHTML = musics.join(' ');
 
@@ -112,6 +113,7 @@ function renderSong() {
             // console.log(songImageCover)
             songImageCover.style.width = '200px';
             songImageCover.style.opacity = 1;
+            // e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     })
 }
@@ -229,3 +231,13 @@ var animationCd = songImage.animate([{
 })
 
 animationCd.pause();
+const app = {
+    name: 'vu',
+    age: 18,
+    get getName() {
+        return this.name;
+    }
+}
+
+
+console.log(app.getName)
